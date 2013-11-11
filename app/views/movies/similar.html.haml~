@@ -1,0 +1,20 @@
+-#  This file is app/views/movies/similar.html.haml
+%h1 Movies with Director: #{movies[1].director} 
+
+%table#movies
+  %thead
+    %tr
+      %th Movie Title
+      %th Rating
+      %th Director
+      %th Release Date
+
+  %tbody
+    - @movies.each do |movie|
+      %tr
+        %td= movie.title 
+        %td= movie.rating
+        %td= movie.director
+        %td= movie.release_date
+
+

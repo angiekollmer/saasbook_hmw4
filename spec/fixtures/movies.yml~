@@ -1,0 +1,48 @@
+# spec/fixtures/movies.yml
+milk_movie:
+  id: 1
+  title: Milk
+  rating: R
+  director: Sam Jones
+  release_date: 2008-11-26
+
+doc_movie:
+  id: 2
+  title: Food, Inc. 
+  rating: PG
+  release_date: 2008-09-07
+
+cookies_movie:
+  id: 3
+  title: Cookies
+  rating: R
+  director: Sam Jones
+  release_date: 2009-11-26
+
+cereal_movie:
+  id: 4
+  title: Cereal
+  rating: R
+  director: Sam Jones
+  release_date: 2007-10-23
+
+doc2_movie:
+  id: 5
+  title: More Food, Inc. 
+  rating: PG
+  release_date: 2008-09-07
+
+doc3_movie:
+  id: 6
+  title: Even More Food, Inc. 
+  rating: PG
+  director: Fred Flinstone
+  release_date: 2008-09-07
+
+doc4_movie:
+  id: 7
+  title: Super Sized Food, Inc. 
+  rating: PG
+  director:
+  release_date: 2008-09-07
+

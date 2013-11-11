@@ -59,8 +59,8 @@ class MoviesController < ApplicationController
   end
 
   def similar
-    #debugger
-    @movies = Movie.find_same_director(params[:id])
+ # debugger
+  @movies = Movie.find_same_director(params[:id])
   end
 
   def destroy

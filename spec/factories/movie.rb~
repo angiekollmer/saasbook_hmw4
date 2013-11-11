@@ -1,0 +1,7 @@
+FactoryGirl.define do
+  factory :movie do
+    title 'A Fake Movie'
+    rating 'PG'
+    release_date {2.years.ago }
+  end
+end

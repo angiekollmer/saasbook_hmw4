@@ -4,7 +4,7 @@ class Movie < ActiveRecord::Base
   end
 
   def self.find_same_director(id)
-   # debugger
+    debugger
     movie = Movie.find(id)
     self.find_all_by_director(movie.director)
   end
