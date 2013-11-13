@@ -59,8 +59,16 @@ class MoviesController < ApplicationController
   end
 
   def similar
- # debugger
-  @movies = Movie.find_same_director(params[:id])
+    # debugger
+    # check whether the selected movie has director info
+    # if not, go to home page and flash error
+    movie = Movie.find params[:id]
+    if movie.director == nil or movie.director == "" then
+      flash[:notice] = "#{movie.title} has no director info."
+      redirect_to movies_path and return
+    else
+      @movies = Movie.find_same_director(params[:id])
+    end #end if
   end
 
   def destroy

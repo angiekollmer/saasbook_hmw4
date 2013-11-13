@@ -17,36 +17,44 @@ describe MoviesController do
   end
 
   describe 'Find Similar Movies When Director Not Blank' do
-    it 'should call the model method that performs the similar search' do
-      movie = FactoryGirl.create(:movie)
+   movie = FactoryGirl.create(:movie, :director => 'Adam Jones')
+   it 'should call the model method that performs the similar search' do
       Movie.should_receive(:find_same_director).with(movie.id.to_s)
-      #debugger
+     # debugger
       put :similar, :id => movie.id
     end
     it 'should select the Home template for rendering' do
       Movie.stub(:find_same_director)
-      put :similar, :id => 1
+      put :similar, :id => movie.id
       response.should render_template('similar')
     end
     it 'should add "movie title" has no director info to flash' do
       fake_results = [mock('Movie'), mock('Movie')]
       Movie.stub(:find_same_director).and_return(fake_results)
-      put :similar, :id => 1
+      put :similar, :id => movie.id
       assigns(:movies).should == fake_results
     end
   end
 
-#  describe 'Return to Home When Director is Blank' do
-#    it 'should not call the model method that performs the similar search' do
-#      movie = movies(:doc_movie)
-#      Movie.should_receive(:find_same_director).with("1")
+  describe 'Return to Home When Director is Blank' do
+    fixtures :movies
+    it 'should not call the model method that performs the similar search when director is nil' do
+      movie = movies(:doc_movie)
+      Movie.should_not_receive(:find_same_director)
       #debugger
-#      put :similar, :id => 1
-#    end
-#    it 'should select the Similar Movies template for rendering' do
-#      Movie.stub(:find_same_director)
- #     put :similar, :id => 1
-#      response.should render_template('similar')
+      put :similar, :id => movie.id
+    end
+    it 'should not call the model method that performs the similar search when director is blank' do
+      movie = movies(:doc_movie)
+      Movie.should_not_receive(:find_same_director)
+      #debugger
+      put :similar, :id => movie.id
+    end
+#    it 'should select the Home template for rendering' do
+#      movie = movies(:doc_movie)
+#      debugger
+#      put :similar, :id => movie.id
+#      response.should render_template('index')
 #    end
 #    it 'should make the similar search results available to that template' do
 #      fake_results = [mock('Movie'), mock('Movie')]
@@ -54,6 +62,6 @@ describe MoviesController do
 #      put :similar, :id => 1
 #      assigns(:movies).should == fake_results
 #    end
-#  end
+  end
 
 end
