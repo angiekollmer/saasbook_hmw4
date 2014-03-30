@@ -15,6 +15,6 @@
         %td= movie.title 
         %td= movie.rating
         %td= movie.director
-        %td= movie.release_date
+        %td= movie.release_date.strftime('%b %d, %Y')
 
 = link_to 'Back to movie list', movies_path
